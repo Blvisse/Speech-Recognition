@@ -88,3 +88,7 @@ Triphone (39 features) + LDA and MLLT + SGMM: 27.36% (All), 20.7% (Good)
 [3] Hadrien Gelas, Laurent Besacier, François Pellegrino, Developments of Swahili Resources for an Automatic Speech Recognition System, 
 http://www.ddl.ish-lyon.cnrs.fr/fulltext/Gelas/Gelas_2012_SLTU.pdf 
 
+
+## Badges 
+[![GitHub license](https://img.shields.io/github/license/Blvisse/Speech-Recognition?style=for-the-badge)](https://github.com/Blvisse/Speech-Recognition/blob/main/LICENSE)
+[![GitHub issues](https://img.shields.io/github/issues/Blvisse/Speech-Recognition?style=for-the-badge)](https://github.com/Blvisse/Speech-Recognition/issues)
