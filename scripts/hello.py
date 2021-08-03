@@ -1,9 +1,12 @@
 import dvc.api
-data=dvc.api.get_url('data/train','https://github.com/Blvisse/Speech-Recognition',rev='train-v0')
-import os
+import pandas as pd
+data=dvc.api.get_url('data/testData.csv','https://github.com/Blvisse/Speech-Recognition',rev='gtest-v0')
+# import os
 
-arr = os.listdir(data)
-print(arr)
+
+data=pd.read_csv(data)
+# arr = os.listdir(data)
+# print(arr)
 
 
 ##comment section
