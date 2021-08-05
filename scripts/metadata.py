@@ -92,6 +92,8 @@ def get_file():
         print (" !!!! The system raised an exception {} !!!!!".format(e.__class__))
 
 
+
+
 if (__name__== '__main__'):
     merge_files()
     meta_data()

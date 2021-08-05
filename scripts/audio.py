@@ -230,6 +230,21 @@ def plot_spectogram(audio_file):
     plt.colorbar(im, cax=cax)
     plt.show()
 
+def plot_frequency(audio_file):
+    x,freqs = create_spectogram(audio_file,fft_length=256,sample_rate=2,hop_length=1)
+    X=librosa.stft(x)
+    Xdb=librosa.amplitude_to_db(abs(X))
+    plt.figure(figsize=(10,9))
+    librosa.display.specshow(Xdb,sr=freqs,x_axis='time',y_axis='hz')
+    plt.colorbar
+
+def resmaple_data(audio_file,resample_rate):
+    #this function takes in the audio file and resample it a defined sampling rate   
+    samples,sample_rate=librosa.load(audio_file)
+    samples=librosa.resample(samples,sample_rate,resample_rate)
+
+    return samples  
+
 
      
 
