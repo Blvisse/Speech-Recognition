@@ -5,7 +5,7 @@ import logging
 import pandas as pd
 logging.basicConfig(filename='..\logs\model.log', filemode='w', format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',level=logging.INFO)
 
-directory=('../data/train/wav')
+directory=('../data/data/train/wav')
 files=[]
 target=('../data/alldata')
 
@@ -51,7 +51,7 @@ name_to_text={}
 def meta_data():
     logging.info("===================== Initializing meat_data function ==================== \n")
     print ("===================== Creating metadata file ================= \n ")
-    filename=('../data/train/text')
+    filename=('../data/data/train/text')
     with open (filename, encoding="utf-8")as f:
         try:
             #open the txt file containnig file and matching text file

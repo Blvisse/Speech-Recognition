@@ -17,6 +17,8 @@ import os
 import wave,array
 from numpy.lib.stride_tricks import as_strided
 from mpl_toolkits.axes_grid1 import make_axes_locatable
+import soundfile as sf
+import sklearn 
 
 
 logging.basicConfig(filename='../logs/audio.log', filemode='w', format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',level=logging.INFO)
@@ -102,28 +104,7 @@ def standard_sample(audio_file,resample):
     
     return ((resig,resample)) 
 
-def resize_audio(audio_file,max_length):
-
-    sig,sr=librosa.load(audio_file) 
-    rows,audio_length=sig.shape
-    max_len=sr//10000 * max_length
-
-    if (audio_length> max_length):
-
-        sig=sig[:,:max_len]
-
-    elif (audio_length < max_length):
-
-        pad_begin_length=random.randint(0, max_length - audio_length)
-        pad_end_length=max_length - audio_length - pad_begin_length
-
-        pad_begin = torch.zeros((rows,pad_begin_length))
-        pad_end=torch.zeros((rows,pad_end_length))
-
-       
-        sig = torch.cat((pad_begin, sig, pad_end), 1)
-
-    return (sig,sr)  
+  
 
 def time_shift(audio,shift_limit):
     #this function shifts the signal to the left or right based on time 
@@ -179,7 +160,7 @@ def make_stereo(audio_path):
     print("====== overwriting wav file ======= ")
     ofile = wave.open(audio_path, 'w')
     ofile.setparams((2, sampwidth, framerate, nframes, comptype, compname))
-    ofile.writeframes(stereo.tostring())
+    ofile.writeframes(stereo.tobytes())
     ofile.close()
 
 def create_spectogram(audio_file,fft_length=256,sample_rate=2,hop_length=1):
@@ -238,13 +219,58 @@ def plot_frequency(audio_file):
     librosa.display.specshow(Xdb,sr=freqs,x_axis='time',y_axis='hz')
     plt.colorbar
 
-def resmaple_data(audio_file,resample_rate):
+def resample_data(audio_file,resample_rate):
     #this function takes in the audio file and resample it a defined sampling rate   
+    print(" ============ Resampling data and overwriting audio  =================")
     samples,sample_rate=librosa.load(audio_file)
     samples=librosa.resample(samples,sample_rate,resample_rate)
+    print(" ========= writing new audio file to location =========== ")
+    sf.write(audio_file,samples,sample_rate)
 
     return samples  
+def pad(audio_file):
+    print(" ============ checking duration of audio file to add padding  =================")
 
+
+    logging.info(" ============ if duration is below 6 we add silence  ================= ")
+    #pick audio file and let librosa calculate the sample_rate and samples which we shall use to calculate the duration
+        
+    samples, sample_rate = librosa.load(audio_file)
+    duration=float(len(samples)/sample_rate)
+
+    print('the duration is ', duration)
+    if duration < 6 :
+        print(" ============  duration is below 6  =================")
+        pad_ms = duration 
+        audio = AudioSegment.from_wav(audio_file)
+        silence = AudioSegment.silent(duration=pad_ms)
+        padded = audio + silence
+        samples, sample_rate = librosa.load(padded)
+        newduration=float(len(samples)/sample_rate)
+        sf.write(audio_file, samples, sample_rate)
+        
+    else :
+        print(" ============  duration is above 6  =================")
+    pass
+    
+def shift (file_path):
+    logging.info(" ============ iAugmenting audio by shifting ================= ")
+    samples, sample_rate = librosa.load(file_path)
+    wav_roll = np.roll(samples,int(sample_rate/10))
+    #plot_spec(data=wav_roll,sr=sample_rate,title=f'Shfiting the wave by Times {sample_rate/10}',fpath=wav)
+    ipd.Audio(wav_roll,rate=sample_rate)
+    sf.write(file_path, wav_roll, sample_rate)
+
+def mfcc(wav):
+    logging.info(" ============ feature extraction mfcc  ================= ")
+    samples, sample_rate = librosa.load(wav)
+    mfcc = librosa.feature.mfcc(samples, sr=sample_rate)
+    # Center MFCC coefficient dimensions to the mean and unit variance
+    mfcc = sklearn.preprocessing.scale(mfcc, axis=1)
+    librosa.display.specshow(mfcc, sr=sample_rate, x_axis='time')
+   
+    sf.write(wav, samples, sample_rate)
+    return mfcc            
 
      
 
