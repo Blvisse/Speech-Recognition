@@ -7,7 +7,7 @@ logging.basicConfig(filename='..\logs\model.log', filemode='w', format='%(asctim
 
 directory=('../data/data/train/wav')
 files=[]
-target=('../data/alldata')
+target=('../data/alldatas')
 
 
 
