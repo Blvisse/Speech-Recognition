@@ -13,7 +13,8 @@ jobs:
           GDRIVE_CREDENTIALS_DATA: ${{ secrets.ORIGINAL_SERVICE_ACCOUNT_JSON }}
         run: |
           # Your ML workflow goes here
-          pip install -r h.txt
+          pip install -r requirements.txt
+          pip install soundfile
           
           
 
