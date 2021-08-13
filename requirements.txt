@@ -1,7 +1,7 @@
 librosa
 torchaudio
 torch
-python
+pandas 
 numpy 
 pydub
 wordcloud
