@@ -1,6 +1,9 @@
+librosa
 torchaudio
 torch
-shutil
+python
+numpy 
 pydub
 wordcloud
 cufflinks
+

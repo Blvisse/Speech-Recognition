@@ -1,0 +1,22 @@
+language: python
+
+python:
+  - '3.9'
+  - '3.8'
+  - '3.7'
+  - '3.6'
+env:
+    repo_token: ${{ secrets.GITHUB_TOKEN }}
+    GDRIVE_CREDENTIALS_DATA: ${{ secrets.ORIGINAL_SERVICE_ACCOUNT_JSON }}
+# cache installation
+   
+
+# Command to install dependencies, e.g. pip install -r requirements.txt --use-mirrors
+install:
+  - pip install -r requirements.txt
+  
+
+
+# Command to run tests, e.g. python setup.py test
+script:
+  - python -m unittest tests.tests_audio.py 
