@@ -1,0 +1,4 @@
+artifact_location: file:///mnt/10ac-batch-4/all-notebooks/blaise_papa/Speech-Recognition/scripts/mlruns/2
+experiment_id: '2'
+lifecycle_stage: active
+name: Merged Data

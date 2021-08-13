@@ -59,5 +59,5 @@ class DVCDATA:
 
 if (__name__== '__main__'):
     instance=DVCDATA()
-    data,dataurl,version=instance.get_data('Calculated Duration','data/duration.csv','https://github.com/Blvisse/Speech-Recognition','final-v0')
+    data,dataurl,version=instance.get_data('Mfcc Data','data/procGen.csv','https://github.com/Blvisse/Speech-Recognition','final-v1')
     print(data)

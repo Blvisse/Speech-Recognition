@@ -1,0 +1,4 @@
+artifact_location: file:///mnt/10ac-batch-4/all-notebooks/blaise_papa/Speech-Recognition/scripts/mlruns/3
+experiment_id: '3'
+lifecycle_stage: active
+name: Mfcc Data
