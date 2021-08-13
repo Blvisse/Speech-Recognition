@@ -19,4 +19,4 @@ install:
 
 # Command to run tests, e.g. python setup.py test
 script:
-  - python -m unittest tests.tests_audio.py 
+  - python -m unittest tests.tests_audio
