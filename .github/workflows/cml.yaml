@@ -23,7 +23,7 @@ jobs:
           
           
           echo "## Model metrics" > report.md
-          cat metric.txt >> report.md
+          
           cat notebooks/loss.txt >> report.md
           
 
