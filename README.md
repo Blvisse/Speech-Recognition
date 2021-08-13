@@ -61,34 +61,57 @@ A language model created using SRILM [2] using the text from the text in 01-CLN4
 
 
 
-### LEXICON/PRONUNCIATION DICTIONARY
-Directory: /lang
-Files: lexicon.txt (lexicon), nonsilence_phones.txt (speech phones), optional_silence.txt (silence phone)
-Description: lexicon contains words and their respective pronunciation, non-speech sound and noise in Kaldi format. G2P conversion rules, please refer to [3]
+## Installation
 
-### SCRIPTS
-in /kaldi-scripts you find the scripts used to train and test models
-(path has to be changed to make it work in your own directory!)
-from the existing data and lang directory you can directly start run the sequence : 04_train_mono.sh + 04a_train_triphone.sh + 04b_train_MLLT_LDA.sh + 04c_train_SAT_FMLLR.sh + 04d_train_MMI_FMMI.sh + 04e_train_sgmm.sh
+Main packages used 
 
-### WER RESULTS OBTAINED SO FAR (you should obtain the same on this data if same protocol used)
-Monophone (13 MFCC): 49.28% (All), 38.5 (Good)
-Triphone (13 MFCC): 33.55% (All), 23.2% (Good)
-Triphone (13 MFCC + delta + delta2): 33.61% (All), 24.4% (Good)
-Triphone (39 features) + LDA and MLLT: 31.92% (All), 22.3% (Good)
-Triphone (39 features) + LDA and MLLT + SAT and FMLLR: 31.56% (All), 22.4% (Good)
-Triphone (39 features) + LDA and MLLT + SAT and FMLLR + MMI and fMMI: 30.87% (All)
-Triphone (39 features) + LDA and MLLT + SGMM: 27.36% (All), 20.7% (Good)
+``` pip install dvc ```
 
+``` pip install flask ```
 
+``` pip install mlflow ```
 
-### REFERENCES
-[1] KALDI: http://kaldi.sourceforge.net/tutorial_running.html
-[2] SRILM: http://www.speech.sri.com/projects/srilm/
-[3] Hadrien Gelas, Laurent Besacier, François Pellegrino, Developments of Swahili Resources for an Automatic Speech Recognition System, 
-http://www.ddl.ish-lyon.cnrs.fr/fulltext/Gelas/Gelas_2012_SLTU.pdf 
+``` pip install librosa ```
 
+### import data from dvc
 
+``` dvc pull ```
+
+### Start flask serve
+
+``` streamlt app.py ```
+
+### View mlflow log 
+
+``` mlflow ui ```
+
+## Folders
+```.dvc ``` DVC configuration
+
+``` data ``` contains data versioned through dvc and also all audio files
+
+``` scripts ``` contains modular scripts that are used to achieve tasks
+
+``` plots ``` results plots from modelling
+
+``` notebooks ``` all notebooks used for the project
+
+``` logs ``` all run logs
+
+``` tests ``` travis cml tests
+
+## Scripts
+
+``` audio.py ``` - This contains all the audio preprocessing functions
+
+``` metadata.py ``` -this genrates a meta_data.json file for audio access
+
+``` datalog ``` -Logs dvc data to mlflow
+
+## Notebooks
+``` Preprocess.ipynb ``` This involves all data anlysis and preprocessing
+
+``` ModelTrainig.ipynb ``` Notebook to train deep learning models
 ## Badges 
 [![GitHub license](https://img.shields.io/github/license/Blvisse/Speech-Recognition?style=for-the-badge)](https://github.com/Blvisse/Speech-Recognition/blob/main/LICENSE)
 [![GitHub issues](https://img.shields.io/github/issues/Blvisse/Speech-Recognition?style=for-the-badge)](https://github.com/Blvisse/Speech-Recognition/issues)
