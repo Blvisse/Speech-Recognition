@@ -2,3 +2,5 @@ torchaudio
 torch
 shutil
 pydub
+wordcloud
+cufflinks
