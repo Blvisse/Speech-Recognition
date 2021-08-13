@@ -51,11 +51,13 @@ class DVCDATA:
             print ("The program ran into an error ... \n ")
             print("Error details {} ".format(e))
             raise FileNotFoundError ("The files weren't Retrived")
+            
+            ### raasies system error ##
 
 
         
 
 if (__name__== '__main__'):
     instance=DVCDATA()
-    data,dataurl,version=instance.get_data('Calculated Duration','data/duration.csv','https://github.com/Blvisse/Speech-Recognition','train-v4')
+    data,dataurl,version=instance.get_data('Calculated Duration','data/duration.csv','https://github.com/Blvisse/Speech-Recognition','final-v0')
     print(data)
