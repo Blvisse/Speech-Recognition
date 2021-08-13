@@ -1,0 +1,15 @@
+artifact_uri: file:///mnt/10ac-batch-4/all-notebooks/blaise_papa/Speech-Recognition/notebooks/mlruns/2/a4658c1c9db441529043c2b1dfbd059a/artifacts
+end_time: 1628789385787
+entry_point_name: ''
+experiment_id: '2'
+lifecycle_stage: active
+name: ''
+run_id: a4658c1c9db441529043c2b1dfbd059a
+run_uuid: a4658c1c9db441529043c2b1dfbd059a
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1628789383329
+status: 3
+tags: []
+user_id: blaise_papa

@@ -1,0 +1,5 @@
+outs:
+- md5: 4fe387bfb7701fad318864aa40afae66
+  size: 4070751
+  path: prep_model.csv
+  isexec: true

@@ -1,0 +1,5 @@
+outs:
+- md5: 28435686ad1a94d414ba4d9f0f847258
+  size: 8127394
+  path: specData.csv
+  isexec: true

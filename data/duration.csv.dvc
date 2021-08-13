@@ -1,0 +1,5 @@
+outs:
+- md5: 3dcf4cfd612e8b36c2f0aa56a40bc01d
+  size: 2439789
+  path: duration.csv
+  isexec: true

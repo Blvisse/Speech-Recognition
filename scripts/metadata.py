@@ -1,16 +1,20 @@
+#file imports 
 import os
 import shutil
 import json
 import logging
 import pandas as pd
-logging.basicConfig(filename='..\logs\model.log', filemode='w', format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',level=logging.INFO)
+import sys 
 
+
+#logging config
+logging.basicConfig(filename='..\logs\metadata.log', filemode='w', format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',level=logging.INFO)
+
+
+#define paths directories
 directory=('../data/data/train/wav')
 files=[]
-target=('../data/alldatas')
-
-
-
+target=('../data/alldata')
 rootdir = 'path/to/dir'
 
 
@@ -40,9 +44,16 @@ def merge_files():
             print(" !!! Error File Not Found  !!!!! \n")
             print(" !!! Program Failed !!!!! \n")
             logging.error(" !!! Error Program Failed !!!!! \n")
+            logging.error("Safely exiting the program")
+            print("Safely exiting the program")
+            sys.exit(1)
         except Exception as e:
             print(" !!! Error !!!!! \n")
             print (" !!! An excetion occurred Error: {} ".format(e.__class__))
+            logging.error(" !!! Error Program Failed !!!!! \n")
+            logging.error("Safely exiting the program")
+            print("Safely exiting the program")
+            sys.exit(1)
 
 
 name_to_text={}
@@ -72,7 +83,7 @@ def meta_data():
             print (" !!!! Error !!!! ")
             print (" !!!! The system raised an exception {} !!!!!".format(e.__class__))
 
-    with open("../data/meta_data.json", "w") as outfile: 
+    with open("../data/meta_datas.json", "w") as outfile: 
         json.dump(name_to_text, outfile)
 
 def get_file():
